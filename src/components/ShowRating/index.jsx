@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { withTaskContext } from "@twilio/flex-ui";
-// import "./index.css";
 
 const TaskItemData = (props) => {
   const [currentTime, setCurrentTime] = useState(Date.parse(new Date()))
@@ -13,7 +12,7 @@ const TaskItemData = (props) => {
 
     let message = items.find(e => e.index === conversation.lastMessage.index)
 
-    const green = 1000 * 30
+    const green = 1000 * 60 * 4
     const yellow = green * 2
 
     const updateTime = () => {
@@ -24,12 +23,9 @@ const TaskItemData = (props) => {
 
     const messageSentTime = Date.parse(message.dateCreated)
 
-
-    if (props.manager.user.identity === message.author) { // it was the attendant who sent the last message
-      // CHANGE TO DEFAULT COLOR
+    if (props.manager.user.identity === message.author) {
       setMustRespond("default")
-    } else {// it was the customer
-      // outside the TIME TO RESPONSE THE CUSTOMER
+    } else {
       if (currentTime - messageSentTime < green) {
         setMustRespond("green")
       } else if (currentTime - messageSentTime < yellow) {
@@ -38,10 +34,6 @@ const TaskItemData = (props) => {
         setMustRespond("red")
       }
     }
-
-    console.log(message)
-    console.log(props)
-    console.log(conversation)
   }, [props.task, currentTime]);
 
   const bgColors = (light, dark) => {
@@ -65,11 +57,7 @@ const TaskItemData = (props) => {
   }
   
   return (
-    <div className="timeComponentContainerSla">
-      <div className="timerSla">
-        {/* <h1>{currentTime}</h1> */}
-      </div>
-    </div>
+    <div className="timeComponentContainerSla"></div>
   );
 };
 
