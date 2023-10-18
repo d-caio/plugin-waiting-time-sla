@@ -41,7 +41,7 @@ const TaskItemData = (props) => {
       props.theme.TaskList.Item.Container.background = light
       props.theme.TaskList.Item.SelectedContainer.background = light
     } else {
-      props.theme.TaskList.Item.SelectedContainer.background = dark
+      props.theme.TaskList.Item.Container.background = dark
       props.theme.TaskList.Item.SelectedContainer.background = dark
     }
   }
